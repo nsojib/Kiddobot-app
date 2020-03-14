@@ -65,7 +65,7 @@ public class WebServer extends Service implements TTSListener{
             return;
         }
         tts=new MyTTS(this, this);
-        tts.speak_nb("Welcome");
+        tts.speak_b("I am ready");
 
         try {
             new Thread() {
@@ -76,6 +76,8 @@ public class WebServer extends Service implements TTSListener{
                         ws = new WebSocketServerSingle(new websocketlistener(), 8000);
                         ws.start();
                         System.out.println("websocket started");
+
+                        tts.speak_b("I am ready");
                     }catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -91,6 +93,7 @@ public class WebServer extends Service implements TTSListener{
         @Override
         public void onopen(String remote) {
             System.out.println("onopen=" + remote);
+            tts.speak_nb("connected");
         }
 
         public String get_help() {
@@ -164,6 +167,7 @@ public class WebServer extends Service implements TTSListener{
         @Override
         public void onclose() {
             System.out.println("connection closed");
+            tts.speak_nb("connection lost");
         }
     }
 
