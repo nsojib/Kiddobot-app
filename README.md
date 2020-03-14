@@ -1,2 +1,2 @@
 "# Kiddobot-app" 
-<img src='bot.png'>
+<img src='bot.png' width=60%>
